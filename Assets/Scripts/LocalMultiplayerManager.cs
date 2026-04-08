@@ -13,7 +13,7 @@ public class LocalMultiplayerManager : MonoBehaviour
         SpriteRenderer sr = player.GetComponent<SpriteRenderer>();
         sr.sprite = playerSprites[player.playerIndex];
 
-        LocalMulitplayerController controller= player.GetComponent<LocalMulitplayerController>();
+        LocalMulitplayerController controller = player.GetComponent<LocalMulitplayerController>();
         controller.manager = this;
     }
 
