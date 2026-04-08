@@ -37,22 +37,22 @@ public class LocalMulitplayerController : MonoBehaviour
         }
     }
 
-    IEnumerator AttackScale()
-    {
+    //IEnumerator AttackScale()
+    //{
 
-        float t = 0;
-        players.localScale = Vector2.one;
+    //    float t = 0;
+    //    players.localScale = Vector2.one;
 
-        while (t < 1)
-        {
-            t += Time.deltaTime;
-            players.localScale = new Vector2(2, 2) * t;
-            yield return null;
-        }
+    //    while (t < 1)
+    //    {
+    //        t += Time.deltaTime;
+    //        players.localScale = new Vector2(2, 2) * t;
+    //        yield return null;
+    //    }
 
-    }
-    public void StartAttackScale()
-    {
-        StartCoroutine(AttackScale());
-    }
+    //}
+    //public void StartAttackScale()
+    //{
+    //    StartCoroutine(AttackScale());
+    //}
 }
