@@ -1,3 +1,4 @@
+using TMPro;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -10,6 +11,8 @@ public class Player : MonoBehaviour
     public Transform crosshair; // reference to crosshair sprite in scene
     public float crosshairDistance = 2; // distance crosshair is from the player
     public bool isLocked = false; // used to prevent stick input from moving when the crosshair is over the target
+    public int score = 0;
+    public TextMeshProUGUI scoreText;
    
     // Update is called once per frame
     void Update()
@@ -46,7 +49,11 @@ public class Player : MonoBehaviour
 
             if(sensor.currentTarget != null)
             {
+                // spawns particles
                 GetComponent<TargetParticle>().SpawnEffect(sensor.currentTarget);
+
+                score++;
+                UpdateScoreUI();
                 // triggers the coruotine on the target
                 TargetColor targetscript = sensor.currentTarget.GetComponent<TargetColor>();
                 if(targetscript != null)
@@ -58,5 +65,9 @@ public class Player : MonoBehaviour
                 isLocked = false;
             }
         }
+    }
+    void UpdateScoreUI()
+    {
+        scoreText.text = "Score: " + score;
     }
 }
