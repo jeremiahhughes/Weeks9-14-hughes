@@ -9,6 +9,7 @@ public class AimSensor : MonoBehaviour
     public float LockOnDistance = 1f;
     public UnityEvent OnLockOn;
     private Player scriptPlayer;
+    public Transform currentTarget;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -34,8 +35,13 @@ public class AimSensor : MonoBehaviour
                 // Lock crosshair to target and stop checking other targets
                 scriptPlayer.isLocked = true;
                 scriptPlayer.crosshair.position = t.position;
+                currentTarget = t;
                 OnLockOn.Invoke();
                 break;
+            }
+            else
+            {
+                currentTarget = null;
             }
         }
     }

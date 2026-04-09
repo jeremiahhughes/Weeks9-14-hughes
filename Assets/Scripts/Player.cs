@@ -37,4 +37,23 @@ public class Player : MonoBehaviour
             aimDirection = stickInput;
         }
     }
+
+    public void OnAttack(InputAction.CallbackContext context)
+    {
+        if(context.started && isLocked)
+        {
+            AimSensor sensor = GetComponent<AimSensor>();
+
+            if(sensor.currentTarget != null)
+            {
+                GetComponent<TargetParticle>().SpawnEffect(sensor.currentTarget);
+                GameObject targetToDestroy = sensor.currentTarget.gameObject;
+
+                sensor.currentTarget = null;
+                isLocked = false;
+
+                Destroy(targetToDestroy);
+            }
+        }
+    }
 }
