@@ -47,12 +47,15 @@ public class Player : MonoBehaviour
             if(sensor.currentTarget != null)
             {
                 GetComponent<TargetParticle>().SpawnEffect(sensor.currentTarget);
-                GameObject targetToDestroy = sensor.currentTarget.gameObject;
-
+                // triggers the coruotine on the target
+                TargetColor targetscript = sensor.currentTarget.GetComponent<TargetColor>();
+                if(targetscript != null)
+                {
+                    targetscript.StartRespawn();
+                }
+                // unlocks the players right stick so they can aim at another target
                 sensor.currentTarget = null;
                 isLocked = false;
-
-                Destroy(targetToDestroy);
             }
         }
     }

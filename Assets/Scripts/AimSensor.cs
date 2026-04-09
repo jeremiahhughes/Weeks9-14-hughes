@@ -25,7 +25,8 @@ public class AimSensor : MonoBehaviour
         foreach (Transform t in targetTransform) // loops through every target in the array
         {
             // skips this if the target no longer exists
-            if (t == null) continue;
+            if (!t.gameObject.activeInHierarchy || !t.GetComponent<SpriteRenderer>().enabled) 
+                continue;
             // calculate distance between the stick's crosshair direction and target position
             float distanceToTarget = Vector2.Distance(crosshairPosition, t.position);
             // Check if distance is within the LockOnDistance threshold
